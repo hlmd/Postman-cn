@@ -1,4 +1,3 @@
 # Postman-cn
-![alt name](3.png "可选标题")
-![alt name](2.png "可选标题")
-
+![login](https://github.com/leihuihua/Postman-cn/blob/master/2.png)
+![login](https://github.com/leihuihua/Postman-cn/blob/master/3.png)
