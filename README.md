@@ -16,8 +16,11 @@ Postman-*-win64-中文版.zip 解压直接用
 app.zip 解压&&替换文件 应用程序目录/resources/app.asar 注意：请替换相同版本的文件
 
 # Mac安装教程
-[Postman官网](https://postman.com/download)下载&安装Postman Mac版
-[下载](https://github.com/hlmd/Postman-cn/releases) app.zip
+[Postman官网](https://www.postman.com/downloads/)下载&安装Postman Mac版
+
+[下载 Postman-*-Mac-汉化版](https://github.com/hlmd/Postman-cn/releases) app.zip
+
 复制到 Postman安装目录 /.../Postman.app/Contents/Resources/
+
 解压 替换 app目录即可
 
