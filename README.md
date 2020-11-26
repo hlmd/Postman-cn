@@ -1,7 +1,7 @@
 # Postman-cn
-最新版本：7.35.0
+最新版本：7.36.0
 
-更新时间：2020-11-03
+更新时间：2020-11-25
 
 [点击下载](https://github.com/hlmd/Postman-cn/releases)
 
