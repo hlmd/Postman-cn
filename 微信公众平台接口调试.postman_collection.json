@@ -1,0 +1,1211 @@
+{
+	"info": {
+		"_postman_id": "c56fb299-e5d8-40ac-bef6-0ce0cb468126",
+		"name": "微信公众平台接口调试",
+		"description": "这是一个微信公众平台接口调试的集合",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "开始开发",
+			"item": [
+				{
+					"name": "获取微信服务器IP地址",
+					"item": [
+						{
+							"name": "获取微信API接口 IP地址",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{domain}}/cgi-bin/get_api_domain_ip?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"get_api_domain_ip"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								},
+								"description": "使用固定IP访问api.weixin.qq.com时，请开发者注意运营商适配，跨运营商访问可能会存在高峰期丢包问题。  \n[图1](https://res.wx.qq.com/wxdoc/dist/assets/img/api.df974246.png)  \nAPI接口IP即api.weixin.qq.com的解析地址，由开发者调用微信侧的接入IP。\n\n**接口调用请求说明**\n\n> http请求方式: GET https://api.weixin.qq.com/cgi-bin/get_api_domain_ip?access_token=ACCESS_TOKEN\n\n**参数说明**\n\n|参数|是否必须|说明|\n|---|---|---|\n|access_token|是|公众号的access_token|\n\n**返回说明**\n\n正常情况下，微信会返回下述JSON数据包给公众号：\n```\n{    \"ip_list\": [        \"127.0.0.1\",         \"127.0.0.2\",         \"101.226.103.0/25\"    ]}\n```\n|参数|说明|\n|---|---|\n|ip_list|微信服务器IP地址列表|\n\n错误时微信会返回错误码等信息，JSON数据包示例如下（该示例为AppID无效错误）:\n```\n{\"errcode\":40013,\"errmsg\":\"invalid appid\"}\n```"
+							},
+							"response": []
+						},
+						{
+							"name": "获取微信callback IP地址",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{domain}}/cgi-bin/getcallbackip?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"getcallbackip"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								},
+								"description": "请开发者确保防火墙、ddos攻击白名单IP内已添加回调IP，以避免误拦截的情况出现。  \n[图2](https://res.wx.qq.com/wxdoc/dist/assets/img/callback.d81ad490.png)  \ncallback IP即微信调用开发者服务器所使用的出口IP。\n\n**接口调用请求说明**\n\n> http请求方式: GET https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token=ACCESS_TOKEN\n\n**参数说明**\n\n|参数|是否必须|说明|\n|---|---|---|\n|access_token|是|公众号的access_token|\n\n**返回说明**\n\n正常情况下，微信会返回下述JSON数据包给公众号：\n```\n{    \"ip_list\": [        \"127.0.0.1\",         \"127.0.0.2\",         \"101.226.103.0/25\"    ]}\n```\n|参数|说明|\n|---|---|\n|ip_list|微信服务器IP地址列表|\n\n错误时微信会返回错误码等信息，JSON数据包示例如下（该示例为AppID无效错误）:\n```\n{\"errcode\":40013,\"errmsg\":\"invalid appid\"}\n```"
+							},
+							"response": []
+						}
+					],
+					"description": "如果公众号基于安全等考虑，需要获知微信服务器的IP地址列表，以便进行相关限制，可以通过该接口获得微信服务器IP地址列表或者IP网段信息。\n\n由于出口IP及入口IP可能存在变动，建议用户每天请求接口1次，以便于及时更新IP列表。为了避免造成单点故障，强烈建议用户不要长期使用旧的IP列表作为api.weixin.qq.com的访问入口。\n"
+				},
+				{
+					"name": "获取Access token",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('获取access_token', function(){\r",
+									"    pm.response.to.have.jsonBody(\"access_token\");\r",
+									"    pm.collectionVariables.set(\"access_token\", pm.response.json().access_token);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{domain}}/cgi-bin/token?grant_type=client_credential&appid={{app_id}}&secret={{app_secret}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"cgi-bin",
+								"token"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "client_credential",
+									"description": "获取access_token填写client_credential"
+								},
+								{
+									"key": "appid",
+									"value": "{{app_id}}",
+									"description": "第三方用户唯一凭证"
+								},
+								{
+									"key": "secret",
+									"value": "{{app_secret}}",
+									"description": "第三方用户唯一凭证密钥，即appsecret"
+								}
+							]
+						},
+						"description": "access_token是公众号的全局唯一接口调用凭据，公众号调用各接口时都需使用access_token。开发者需要进行妥善保存。access_token的存储至少要保留512个字符空间。access_token的有效期目前为2个小时，需定时刷新，重复获取将导致上次获取的access_token失效。\n\n公众平台的API调用所需的access_token的使用及生成方式说明：\n\n1、建议公众号开发者使用中控服务器统一获取和刷新access_token，其他业务逻辑服务器所使用的access_token均来自于该中控服务器，不应该各自去刷新，否则容易造成冲突，导致access_token覆盖而影响业务；\n\n2、目前access_token的有效期通过返回的expire_in来传达，目前是7200秒之内的值。中控服务器需要根据这个有效时间提前去刷新新access_token。在刷新过程中，中控服务器可对外继续输出的老access_token，此时公众平台后台会保证在5分钟内，新老access_token都可用，这保证了第三方业务的平滑过渡；\n\n3、access_token的有效时间可能会在未来有调整，所以中控服务器不仅需要内部定时主动刷新，还需要提供被动刷新access_token的接口，这样便于业务服务器在API调用获知access_token已超时的情况下，可以触发access_token的刷新流程。\n\n4、对于可能存在风险的调用，在开发者进行获取 access_token调用时进入风险调用确认流程，需要用户管理员确认后才可以成功获取。具体流程为：\n\n开发者通过某IP发起调用->平台返回错误码[89503]并同时下发模板消息给公众号管理员->公众号管理员确认该IP可以调用->开发者使用该IP再次发起调用->调用成功。\n\n如公众号管理员第一次拒绝该IP调用，用户在1个小时内将无法使用该IP再次发起调用，如公众号管理员多次拒绝该IP调用，该IP将可能长期无法发起调用。平台建议开发者在发起调用前主动与管理员沟通确认调用需求，或请求管理员开启IP白名单功能并将该IP加入IP白名单列表。\n\n公众号和小程序均可以使用AppID和AppSecret调用本接口来获取access_token。AppID和AppSecret可在“微信公众平台-开发-基本配置”页中获得（需要已经成为开发者，且帐号没有异常状态）。**调用接口时，请登录“微信公众平台-开发-基本配置”提前将服务器IP地址添加到IP白名单中，点击查看设置方法，否则将无法调用成功。**小程序无需配置IP白名单。\n\n###### 接口调用请求说明\n\n> https请求方式: GET https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET\n\n###### 参数说明\n|参数|是否必须|说明|\n|---|---|---|\n|grant_type|是|获取access_token填写client_credential|\n|appid|是|第三方用户唯一凭证|\n|secret|是|第三方用户唯一凭证密钥，即appsecret|\n\n###### 返回说明\n正常情况下，微信会返回下述JSON数据包给公众号：\n```\n{\"access_token\":\"ACCESS_TOKEN\",\"expires_in\":7200}\n```\n\n###### 参数说明\n|参数|说明|\n|---|---|\n|access_token|获取到的凭证|\n|expires_in|凭证有效时间，单位：秒|\n\n错误时微信会返回错误码等信息，JSON数据包示例如下（该示例为AppID无效错误）:\n```\n{\"errcode\":40013,\"errmsg\":\"invalid appid\"}\n```\n\n###### 返回码说明\n|返回码|说明|\n|---|---|\n|-1|系统繁忙，此时请开发者稍候再试|\n|0|请求成功|\n|40001|AppSecret错误或者AppSecret不属于这个公众号，请开发者确认AppSecret的正确性|\n|40002|请确保grant_type字段值为client_credential|\n|40164|调用接口的IP地址不在白名单中，请在接口IP白名单中进行设置。（小程序及小游戏调用不要求IP地址在白名单内。）|\n|89503|此IP调用需要管理员确认,请联系管理员|\n|89501|此IP正在等待管理员确认,请联系管理员|\n|89506|24小时内该IP被管理员拒绝调用两次，24小时内不可再使用该IP调用|\n|89507|1小时内该IP被管理员拒绝调用一次，1小时内不可再使用该IP调用|\n\n[使用网页调试工具调试该接口](https://mp.weixin.qq.com/debug/cgi-bin/apiinfo?t=index&type=%E5%9F%BA%E7%A1%80%E6%94%AF%E6%8C%81&form=%E8%8E%B7%E5%8F%96access_token%E6%8E%A5%E5%8F%A3%20/token)"
+					},
+					"response": []
+				},
+				{
+					"name": "网络检测",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"action\": \"all\",\r\n    \"check_operator\": \"DEFAULT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/cgi-bin/callback/check?access_token={{access_token}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"cgi-bin",
+								"callback",
+								"check"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{access_token}}",
+									"description": "全局唯一接口调用凭据"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "自定义菜单",
+			"item": [
+				{
+					"name": "事件推送",
+					"item": [
+						{
+							"name": "点击菜单拉取消息时的事件推送",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "<xml>\r\n<ToUserName><![CDATA[o3na76i0pdgLS0_fXvi1oCRECtsg ]]></ToUserName>\r\n<FromUserName><![CDATA[FromUser]]></FromUserName>\r\n<CreateTime>123456789</CreateTime>\r\n<MsgType><![CDATA[event]]></MsgType>\r\n<Event><![CDATA[CLICK]]></Event>\r\n<EventKey><![CDATA[EVENTKEY]]></EventKey>\r\n</xml>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{callback_url}}",
+									"host": [
+										"{{callback_url}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "创建接口",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"button\": [\r\n        {\r\n            \"type\": \"click\",\r\n            \"name\": \"点击按钮\",\r\n            \"key\": \"V1001_TODAY_MUSIC\"\r\n        },\r\n        {\r\n            \"name\": \"菜单\",\r\n            \"sub_button\": [\r\n                {\r\n                    \"type\": \"view\",\r\n                    \"name\": \"百度搜索\",\r\n                    \"url\": \"https://www.baidu.com/\"\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/cgi-bin/menu/create?access_token={{access_token}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"cgi-bin",
+								"menu",
+								"create"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{access_token}}",
+									"description": "全局唯一接口调用凭据"
+								}
+							]
+						},
+						"description": "自定义菜单能够帮助公众号丰富界面，让用户更好更快地理解公众号的功能。开启自定义菜单后，公众号界面如图所示：\n[图1](https://mmbiz.qpic.cn/mmbiz_jpg/PiajxSqBRaEIQxibpLbyuSK4TssiajqknJS6dACV5IoTxppdoyfGEYScCFMqV3dgFzf2tGqy2IiciaysTlaZt6zchibA/0?wx_fmt=jpeg)\n\n请注意：\n\n1. 自定义菜单最多包括3个一级菜单，每个一级菜单最多包含5个二级菜单。\n2. 一级菜单最多4个汉字，二级菜单最多7个汉字，多出来的部分将会以“...”代替。\n3. 创建自定义菜单后，菜单的刷新策略是，在用户进入公众号会话页或公众号profile页时，如果发现上一次拉取菜单的请求在5分钟以前，就会拉取一下菜单，如果菜单有更新，就会刷新客户端的菜单。测试时可以尝试取消关注公众账号后再次关注，则可以看到创建后的效果。​\n\n自定义菜单接口可实现多种类型按钮，如下：\n\n1. click：点击推事件用户点击click类型按钮后，微信服务器会通过消息接口推送消息类型为event的结构给开发者（参考消息接口指南），并且带上按钮中开发者填写的key值，开发者可以通过自定义的key值与用户进行交互；\n2. view：跳转URL用户点击view类型按钮后，微信客户端将会打开开发者在按钮中填写的网页URL，可与网页授权获取用户基本信息接口结合，获得用户基本信息。\n3. scancode_push：扫码推事件用户点击按钮后，微信客户端将调起扫一扫工具，完成扫码操作后显示扫描结果（如果是URL，将进入URL），且会将扫码的结果传给开发者，开发者可以下发消息。\n4. scancode_waitmsg：扫码推事件且弹出“消息接收中”提示框用户点击按钮后，微信客户端将调起扫一扫工具，完成扫码操作后，将扫码的结果传给开发者，同时收起扫一扫工具，然后弹出“消息接收中”提示框，随后可能会收到开发者下发的消息。\n5. pic_sysphoto：弹出系统拍照发图用户点击按钮后，微信客户端将调起系统相机，完成拍照操作后，会将拍摄的相片发送给开发者，并推送事件给开发者，同时收起系统相机，随后可能会收到开发者下发的消息。\n6. pic_photo_or_album：弹出拍照或者相册发图用户点击按钮后，微信客户端将弹出选择器供用户选择“拍照”或者“从手机相册选择”。用户选择后即走其他两种流程。\n7. pic_weixin：弹出微信相册发图器用户点击按钮后，微信客户端将调起微信相册，完成选择操作后，将选择的相片发送给开发者的服务器，并推送事件给开发者，同时收起相册，随后可能会收到开发者下发的消息。\n8. location_select：弹出地理位置选择器用户点击按钮后，微信客户端将调起地理位置选择工具，完成选择操作后，将选择的地理位置发送给开发者的服务器，同时收起位置选择工具，随后可能会收到开发者下发的消息。\n9. media_id：下发消息（除文本消息）用户点击media_id类型按钮后，微信服务器会将开发者填写的永久素材id对应的素材下发给用户，永久素材类型可以是图片、音频、视频、图文消息。请注意：永久素材id必须是在“素材管理/新增永久素材”接口上传后获得的合法id。\n10. view_limited：跳转图文消息URL用户点击view_limited类型按钮后，微信客户端将打开开发者在按钮中填写的永久素材id对应的图文消息URL，永久素材类型只支持图文消息。请注意：永久素材id必须是在“素材管理/新增永久素材”接口上传后获得的合法id。​\n\n**请注意，3到8的所有事件，仅支持微信iPhone5.4.1以上版本，和Android5.4以上版本的微信用户，旧版本微信用户点击后将没有回应，开发者也不能正常接收到事件推送。9和10，是专门给第三方平台旗下未微信认证（具体而言，是资质认证未通过）的订阅号准备的事件类型，它们是没有事件推送的，能力相对受限，其他类型的公众号不必使用。**\n\n**接口调用请求说明**\n\n> http请求方式：POST（请使用https协议） https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN\n\n**click和view的请求示例**\n```\n {\n     \"button\":[\n     {\t\n          \"type\":\"click\",\n          \"name\":\"今日歌曲\",\n          \"key\":\"V1001_TODAY_MUSIC\"\n      },\n      {\n           \"name\":\"菜单\",\n           \"sub_button\":[\n           {\t\n               \"type\":\"view\",\n               \"name\":\"搜索\",\n               \"url\":\"http://www.soso.com/\"\n            },\n            {\n                 \"type\":\"miniprogram\",\n                 \"name\":\"wxa\",\n                 \"url\":\"http://mp.weixin.qq.com\",\n                 \"appid\":\"wx286b93c14bbf93aa\",\n                 \"pagepath\":\"pages/lunar/index\"\n             },\n            {\n               \"type\":\"click\",\n               \"name\":\"赞一下我们\",\n               \"key\":\"V1001_GOOD\"\n            }]\n       }]\n }\n```\n**其他新增按钮类型的请求示例**\n```\n{\n    \"button\": [\n        {\n            \"name\": \"扫码\", \n            \"sub_button\": [\n                {\n                    \"type\": \"scancode_waitmsg\", \n                    \"name\": \"扫码带提示\", \n                    \"key\": \"rselfmenu_0_0\", \n                    \"sub_button\": [ ]\n                }, \n                {\n                    \"type\": \"scancode_push\", \n                    \"name\": \"扫码推事件\", \n                    \"key\": \"rselfmenu_0_1\", \n                    \"sub_button\": [ ]\n                }\n            ]\n        }, \n        {\n            \"name\": \"发图\", \n            \"sub_button\": [\n                {\n                    \"type\": \"pic_sysphoto\", \n                    \"name\": \"系统拍照发图\", \n                    \"key\": \"rselfmenu_1_0\", \n                   \"sub_button\": [ ]\n                 }, \n                {\n                    \"type\": \"pic_photo_or_album\", \n                    \"name\": \"拍照或者相册发图\", \n                    \"key\": \"rselfmenu_1_1\", \n                    \"sub_button\": [ ]\n                }, \n                {\n                    \"type\": \"pic_weixin\", \n                    \"name\": \"微信相册发图\", \n                    \"key\": \"rselfmenu_1_2\", \n                    \"sub_button\": [ ]\n                }\n            ]\n        }, \n        {\n            \"name\": \"发送位置\", \n            \"type\": \"location_select\", \n            \"key\": \"rselfmenu_2_0\"\n        },\n        {\n           \"type\": \"media_id\", \n           \"name\": \"图片\", \n           \"media_id\": \"MEDIA_ID1\"\n        }, \n        {\n           \"type\": \"view_limited\", \n           \"name\": \"图文消息\", \n           \"media_id\": \"MEDIA_ID2\"\n        }\n    ]\n}\n```\n**参数说明**\n\n|参数|是否必须|说明|\n|---|---|---|\n|button\t是|一级菜单数组，个数应为1~3个|\n|sub_button|否|二级菜单数组，个数应为1~5个|\n|type|是|菜单的响应动作类型，view表示网页类型，click表示点击类型，miniprogram表示小程序类型|\n|name|是|菜单标题，不超过16个字节，子菜单不超过60个字节|\n|key|click等点击类型必须|菜单KEY值，用于消息接口推送，不超过128字节|\n|url|view、miniprogram类型必须|网页 链接，用户点击菜单可打开链接，不超过1024字节。 type为miniprogram时，不支持小程序的老版本客户端将打开本url。|\n|media_id|media_id类型和view_limited类型必须|调用新增永久素材接口返回的合法media_id|\n|appid|miniprogram类型必须|小程序的appid（仅认证公众号可配置）|\n|pagepath|miniprogram类型必须|小程序的页面路径|\n\n**返回结果**\n\n正确时的返回JSON数据包如下：\n```\n{\"errcode\":0,\"errmsg\":\"ok\"}\n```\n错误时的返回JSON数据包如下（示例为无效菜单名长度）：\n```\n{\"errcode\":40018,\"errmsg\":\"invalid button name size\"}\n```\n[使用网页调试工具调试该接口](https://mp.weixin.qq.com/debug/cgi-bin/apiinfo?t=index&type=%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8F%9C%E5%8D%95&form=%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8F%9C%E5%8D%95%E5%88%9B%E5%BB%BA%E6%8E%A5%E5%8F%A3%20/menu/creat)\n\n开发过程中如遇问题，可前往微信开放社区 [#公众号](https://developers.weixin.qq.com/community/minihome/question/1277775808983138305?mockCommonUse=1) 专区发帖交流。"
+					},
+					"response": []
+				},
+				{
+					"name": "查询接口",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/cgi-bin/get_current_selfmenu_info?access_token={{access_token}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"cgi-bin",
+								"get_current_selfmenu_info"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{access_token}}",
+									"description": "全局唯一接口调用凭据"
+								}
+							]
+						},
+						"description": "本接口将会提供公众号当前使用的自定义菜单的配置，如果公众号是通过API调用设置的菜单，则返回菜单的开发配置，而如果公众号是在公众平台官网通过网站功能发布菜单，则本接口返回运营者设置的菜单配置。\n\n请注意：\n\n第三方平台开发者可以通过本接口，在旗下公众号将业务授权给你后，立即通过本接口检测公众号的自定义菜单配置，并通过接口再次给公众号设置好自动回复规则，以提升公众号运营者的业务体验。\n本接口与自定义菜单查询接口的不同之处在于，本接口无论公众号的接口是如何设置的，都能查询到接口，而自定义菜单查询接口则仅能查询到使用API设置的菜单配置。\n认证/未认证的服务号/订阅号，以及接口测试号，均拥有该接口权限。\n从第三方平台的公众号登录授权机制上来说，该接口从属于消息与菜单权限集。\n本接口中返回的图片/语音/视频为临时素材（临时素材每次获取都不同，3天内有效，通过素材管理-获取临时素材接口来获取这些素材），本接口返回的图文消息为永久素材素材（通过素材管理-获取永久素材接口来获取这些素材）。\n\n**接口调用请求说明**\n\n> http请求方式: GET（请使用https协议）https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info?access_token=ACCESS_TOKEN\n\n**返回结果说明**\n\n如果公众号是在公众平台官网通过网站功能发布菜单，则本接口返回的自定义菜单配置样例如下：\n```\n{ \n   \"is_menu_open\": 1, \n   \"selfmenu_info\": { \n       \"button\": [ \n           { \n               \"name\": \"button\", \n               \"sub_button\": { \n                   \"list\": [ \n                       { \n                           \"type\": \"view\", \n                           \"name\": \"view_url\", \n                           \"url\": \"http://www.qq.com\"\n                       }, \n                       { \n                           \"type\": \"news\", \n                           \"name\": \"news\", \n                           \"value\":\"KQb_w_Tiz-nSdVLoTV35Psmty8hGBulGhEdbb9SKs-o\",\n                           \"news_info\": { \n                               \"list\": [ \n                                   { \n                                       \"title\": \"MULTI_NEWS\", \n                                       \"author\": \"JIMZHENG\", \n                                       \"digest\": \"text\", \n                                       \"show_cover\": 0, \n                                       \"cover_url\": \"http://mmbiz.qpic.cn/mmbiz/GE7et87vE9vicuCibqXsX9GPPLuEtBfXfK0HKuBIa1A1cypS0uY1wickv70iaY1gf3I1DTszuJoS3lAVLvhTcm9sDA/0\", \n                                       \"content_url\": \"http://mp.weixin.qq.com/s?__biz=MjM5ODUwNTM3Ng==&mid=204013432&idx=1&sn=80ce6d9abcb832237bf86c87e50fda15#rd\", \n                                       \"source_url\": \"\"\n                                   }, \n                                   { \n                                       \"title\": \"MULTI_NEWS1\", \n                                       \"author\": \"JIMZHENG\", \n                                       \"digest\": \"MULTI_NEWS1\", \n                                       \"show_cover\": 1, \n                                       \"cover_url\": \"http://mmbiz.qpic.cn/mmbiz/GE7et87vE9vicuCibqXsX9GPPLuEtBfXfKnmnpXYgWmQD5gXUrEApIYBCgvh2yHsu3ic3anDUGtUCHwjiaEC5bicd7A/0\", \n                                       \"content_url\": \"http://mp.weixin.qq.com/s?__biz=MjM5ODUwNTM3Ng==&mid=204013432&idx=2&sn=8226843afb14ecdecb08d9ce46bc1d37#rd\", \n                                       \"source_url\": \"\"\n                                   }\n                               ]\n                           }\n                       },\n                       {\n                           \"type\": \"video\", \n                           \"name\": \"video\", \n                           \"value\": \"http://61.182.130.30/vweixinp.tc.qq.com/1007_114bcede9a2244eeb5ab7f76d951df5f.f10.mp4?vkey=77A42D0C2015FBB0A3653D29C571B5F4BBF1D243FBEF17F09C24FF1F2F22E30881BD350E360BC53F&sha=0&save=1\"\n                       }, \n                       { \n                           \"type\": \"voice\",\n                           \"name\": \"voice\", \n                           \"value\": \"nTXe3aghlQ4XYHa0AQPWiQQbFW9RVtaYTLPC1PCQx11qc9UB6CiUPFjdkeEtJicn\"\n                       }\n                   ]\n               }\n           }, \n           { \n               \"type\": \"text\", \n               \"name\": \"text\", \n               \"value\": \"This is text!\"\n           }, \n           { \n               \"type\": \"img\", \n               \"name\": \"photo\", \n               \"value\": \"ax5Whs5dsoomJLEppAvftBUuH7CgXCZGFbFJifmbUjnQk_ierMHY99Y5d2Cv14RD\"\n           }\n       ]\n   }\n}\n```\n如果公众号是通过API调用设置的菜单，自定义菜单配置样例如下：\n```\n{ \n   \"is_menu_open\": 1, \n   \"selfmenu_info\": { \n       \"button\": [ \n           { \n               \"type\": \"click\", \n               \"name\": \"今日歌曲\", \n               \"key\": \"V1001_TODAY_MUSIC\"\n           }, \n           { \n               \"name\": \"菜单\", \n               \"sub_button\": { \n                   \"list\": [ \n                       { \n                           \"type\": \"view\", \n                           \"name\": \"搜索\", \n                           \"url\": \"http://www.soso.com/\"\n                       }, \n                       { \n                           \"type\": \"view\", \n                           \"name\": \"视频\", \n                           \"url\": \"http://v.qq.com/\"\n                       }, \n                       { \n                           \"type\": \"click\", \n                           \"name\": \"赞一下我们\", \n                           \"key\": \"V1001_GOOD\"\n                       }\n                   ]\n               }\n           }\n       ]\n   }\n}\n```\n\n**参数说明**\n\n|参数|说明|\n|---|---|\n|is_menu_open|菜单是否开启，0代表未开启，1代表开启|\n|selfmenu_info|菜单信息|\n|button|菜单按钮|\n|type|菜单的类型，公众平台官网上能够设置的菜单类型有view（跳转网页）、text（返回文本，下同）、img、photo、video、voice。使用API设置的则有8种，详见《自定义菜单创建接口》|\n|name|菜单名称|\n|value、url、key等字段|对于不同的菜单类型，value的值意义不同。官网上设置的自定义菜单： Text:保存文字到value； Img、voice：保存mediaID到value； Video：保存视频下载链接到value； News：保存图文消息到news_info，同时保存mediaID到value； View：保存链接到url。 使用API设置的自定义菜单： click、scancode_push、scancode_waitmsg、pic_sysphoto、pic_photo_or_album、 pic_weixin、location_select：保存值到key；view：保存链接到url|\n|news_info|图文消息的信息|\n|title|图文消息的标题|\n|digest|摘要|\n|author|作者|\n|show_cover|是否显示封面，0为不显示，1为显示|\n|cover_url|封面图片的URL|\n|content_url|正文的URL|\n|source_url|原文的URL，若置空则无查看原文入口|"
+					},
+					"response": []
+				},
+				{
+					"name": "删除请求",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/cgi-bin/menu/delete?access_token={{access_token}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"cgi-bin",
+								"menu",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{access_token}}",
+									"description": "全局唯一接口调用凭据"
+								}
+							]
+						},
+						"description": "使用接口创建自定义菜单后，开发者还可使用接口删除当前使用的自定义菜单。另请注意，在个性化菜单时，调用此接口会删除默认菜单及全部个性化菜单。\n\n**请求说明**\n> http请求方式：GET https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=ACCESS_TOKEN\n\n**返回说明**\n对应创建接口，正确的Json返回结果:\n```\n{\"errcode\":0,\"errmsg\":\"ok\"}\n```\n[使用网页调试工具调试该接口](https://mp.weixin.qq.com/debug/cgi-bin/apiinfo?t=index&type=%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8F%9C%E5%8D%95&form=%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8F%9C%E5%8D%95%E5%88%9B%E5%BB%BA%E6%8E%A5%E5%8F%A3%20/menu/creat)"
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "用户管理",
+			"item": [
+				{
+					"name": "用户标签管理",
+					"item": [
+						{
+							"name": "标签列表",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{domain}}/cgi-bin/tags/get?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"tags",
+										"get"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								},
+								"description": "一个公众号，最多可以创建100个标签。\r\n\r\n接口调用请求说明\r\n\r\nhttp请求方式：POST（请使用https协议） https://api.weixin.qq.com/cgi-bin/tags/create?access_token=ACCESS_TOKEN\r\n\r\nPOST数据格式：JSON POST数据示例：\r\n\r\n{   \"tag\" : {     \"name\" : \"广东\"//标签名   } } \r\n参数说明\r\n\r\n参数\t说明\r\naccess_token\t调用接口凭据\r\nname\t标签名（30个字符以内）\r\n返回说明（正常时返回的json数据包示例）\r\n\r\n{   \"tag\":{ \"id\":134,//标签id \"name\":\"广东\"   } } \r\n返回参数说明\r\n\r\n参数\t说明\r\nid\t标签id，由微信分配\r\nname\t标签名，UTF8编码\r\n错误码说明\r\n\r\n错误码\t说明\r\n-1\t系统繁忙\r\n45157\t标签名非法，请注意不能和其他标签重名\r\n45158\t标签名长度超过30个字节\r\n45056\t创建的标签数过多，请注意不能超过100个"
+							},
+							"response": []
+						},
+						{
+							"name": "新增标签",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tag\" :{\r\n        \"name\": \"程序员\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/cgi-bin/tags/create?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"tags",
+										"create"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "编辑标签",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tag\" :{\r\n        \"id\": 100,\r\n        \"name\": \"程序员\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/cgi-bin/tags/update?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"tags",
+										"update"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除标签",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tag\" :{\r\n        \"id\": 101\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/cgi-bin/tags/delete?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"tags",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取标签下粉丝列表",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tagid\": 100,\r\n    \"next_openid\": \"\"\r\n} ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/cgi-bin/user/tag/get?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"user",
+										"tag",
+										"get"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "批量为用户打标签",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"openid_list\":[\r\n        \"o3na76i0pdgLS0_fXvi1oCRECtsg\"\r\n    ],\r\n    \"tagid\": 100\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/cgi-bin/tags/members/batchtagging?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"tags",
+										"members",
+										"batchtagging"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "批量为用户取消标签",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"openid_list\": [\r\n        \"o3na76i0pdgLS0_fXvi1oCRECtsg\"\r\n    ],\r\n    \"tagid\": 100\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/cgi-bin/tags/members/batchuntagging?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"tags",
+										"members",
+										"batchuntagging"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取用户身上的标签列表",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"openid\": \"o3na76i0pdgLS0_fXvi1oCRECtsg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/cgi-bin/tags/getidlist?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"tags",
+										"getidlist"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "获取用户基本信息（包括UnionID机制）",
+					"item": [
+						{
+							"name": "获取用户基本信息（包括UnionID机制）",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{domain}}/cgi-bin/user/info?access_token={{access_token}}&openid=o3na76i0pdgLS0_fXvi1oCRECtsg&lang=zh_CN",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"user",
+										"info"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										},
+										{
+											"key": "openid",
+											"value": "o3na76i0pdgLS0_fXvi1oCRECtsg",
+											"description": "普通用户的标识，对当前公众号唯一"
+										},
+										{
+											"key": "lang",
+											"value": "zh_CN",
+											"description": "返回国家地区语言版本，zh_CN 简体，zh_TW 繁体，en 英语"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "批量获取用户基本信息",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_list\": [\r\n        {\r\n            \"openid\": \"o3na76i0pdgLS0_fXvi1oCRECtsg\",\r\n            \"lang\": \"zh_CN\"\r\n        },\r\n        {\r\n            \"openid\": \"o3na76lOJIrjF3JCY493hfIjiKZY\",\r\n            \"lang\": \"zh_CN\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/cgi-bin/user/info/batchget?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"user",
+										"info",
+										"batchget"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "黑名单管理",
+					"item": [
+						{
+							"name": "获取黑名单列表",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"begin_openid\":\"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/cgi-bin/tags/members/getblacklist?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"tags",
+										"members",
+										"getblacklist"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "拉黑用户",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"openid_list\": [\r\n        \"o3na76i0pdgLS0_fXvi1oCRECtsg\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/cgi-bin/tags/members/batchblacklist?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"tags",
+										"members",
+										"batchblacklist"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "取消拉黑用户",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"openid_list\": [\r\n        \"o3na76i0pdgLS0_fXvi1oCRECtsg\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/cgi-bin/tags/members/batchunblacklist?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"tags",
+										"members",
+										"batchunblacklist"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "获取用户列表",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/cgi-bin/user/get?access_token={{access_token}}&next_openid=",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"cgi-bin",
+								"user",
+								"get"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{access_token}}",
+									"description": "全局唯一接口调用凭据"
+								},
+								{
+									"key": "next_openid",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "设置用户备注名",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"openid\": \"o3na76i0pdgLS0_fXvi1oCRECtsg\",\r\n    \"remark\": \"黄连木笛\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/cgi-bin/user/info/updateremark?access_token={{access_token}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"cgi-bin",
+								"user",
+								"info",
+								"updateremark"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{access_token}}",
+									"description": "全局唯一接口调用凭据"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "消息管理",
+			"item": [
+				{
+					"name": "模板消息接口",
+					"item": [
+						{
+							"name": "设置所属行业",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"industry_id1\": \"1\",\r\n    \"industry_id2\": \"11\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/cgi-bin/template/api_set_industry?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"template",
+										"api_set_industry"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取设置的行业信息",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{domain}}/cgi-bin/template/get_industry?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"template",
+										"get_industry"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获得模板ID",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"template_id_short\":\"TM00015\"\r\n }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/cgi-bin/template/api_add_template?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"template",
+										"api_add_template"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取模板列表",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{domain}}/cgi-bin/template/get_all_private_template?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"template",
+										"get_all_private_template"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除模板",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"template_id\": \"Dyvp3-Ff0cnail_CDSzk1fIc6-9lOkxsQE7exTJbwUE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/cgi-bin/template/del_private_template?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"template",
+										"del_private_template"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "发送模板消息",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"touser\": \"{{open_id}}\",\r\n    \"template_id\": \"{{template_id}}\",\r\n    \"data\": {\r\n        \"price\": {\r\n            \"value\": \"38元\",\r\n            \"color\": \"#990000\"\r\n        },\r\n        \"room\": {\r\n            \"value\": \"麓谷企业广场C3栋1003\",\r\n            \"color\": \"#173177\"\r\n        },\r\n        \"cleaner\": {\r\n            \"value\": \"雷华慧、黄四梅、曹港回\",\r\n            \"color\": \"#173177\"\r\n        },\r\n        \"type\": {\r\n            \"value\": \"开荒\",\r\n            \"color\": \"#173177\"\r\n        },\r\n        \"time\": {\r\n            \"value\": \"2020年12月18日 10:29\",\r\n            \"color\": \"#173177\"\r\n        },\r\n        \"remark\": {\r\n            \"value\": \"注意打扫干净点\",\r\n            \"color\": \"#173177\"\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/cgi-bin/message/template/send?access_token={{access_token}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"cgi-bin",
+										"message",
+										"template",
+										"send"
+									],
+									"query": [
+										{
+											"key": "access_token",
+											"value": "{{access_token}}",
+											"description": "全局唯一接口调用凭据"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "一次性订阅消息",
+					"item": [
+						{
+							"name": "一次性订阅消息",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "需要用户同意授权，获取一次给用户推送一条订阅模板消息的机会",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{domain_mp}}/mp/subscribemsg?action=get_confirm&appid={{app_id}}&scene=1000&template_id=1uDxHNXwYQfBmXOfPJcjAS3FynHArD8aWMEFNRGSbCc&redirect_url=http://support.qq.com&reserved=test#wechat_redirect",
+									"host": [
+										"{{domain_mp}}"
+									],
+									"path": [
+										"mp",
+										"subscribemsg"
+									],
+									"query": [
+										{
+											"key": "action",
+											"value": "get_confirm",
+											"description": "直接填get_confirm即可"
+										},
+										{
+											"key": "appid",
+											"value": "{{app_id}}",
+											"description": "公众号的唯一标识"
+										},
+										{
+											"key": "scene",
+											"value": "1000",
+											"description": "重定向后会带上scene参数，开发者可以填0-10000的整形值，用来标识订阅场景值"
+										},
+										{
+											"key": "template_id",
+											"value": "1uDxHNXwYQfBmXOfPJcjAS3FynHArD8aWMEFNRGSbCc",
+											"description": "订阅消息模板ID，登录公众平台后台，在接口权限列表处可查看订阅模板ID"
+										},
+										{
+											"key": "redirect_url",
+											"value": "http://support.qq.com",
+											"description": "授权后重定向的回调地址，请使用UrlEncode对链接进行处理。 注：要求redirect_url的域名要跟登记的业务域名一致，且业务域名不能带路径。 业务域名需登录公众号，在设置-公众号设置-功能设置里面对业务域名设置。"
+										},
+										{
+											"key": "reserved",
+											"value": "test",
+											"description": "用于保持请求和回调的状态，授权请后原样带回给第三方。该参数可用于防止csrf攻击（跨站请求伪造攻击），建议第三方带上该参数，可设置为简单的随机数加session进行校验，开发者可以填写a-zA-Z0-9的参数值，最多128字节，要求做urlencode"
+										}
+									],
+									"hash": "wechat_redirect"
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "domain",
+			"value": "https://api.weixin.qq.com"
+		},
+		{
+			"key": "domain_mp",
+			"value": "https://mp.weixin.qq.com"
+		},
+		{
+			"key": "app_id",
+			"value": ""
+		},
+		{
+			"key": "app_secret",
+			"value": ""
+		},
+		{
+			"key": "access_token",
+			"value": ""
+		},
+		{
+			"key": "callback_url",
+			"value": ""
+		},
+		{
+			"key": "callback_token",
+			"value": ""
+		}
+	]
+}
