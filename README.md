@@ -5,11 +5,6 @@
 
 [点击下载](https://github.com/hlmd/Postman-cn/releases)
 
-
-![Alt text](https://raw.githubusercontent.com/hlmd/Postman-cn/master/2.png)
-![Alt text](https://raw.githubusercontent.com/hlmd/Postman-cn/master/3.png)
-
-
 # windows安装教程
 Postman-*-win64-中文版.zip 解压直接用
 
