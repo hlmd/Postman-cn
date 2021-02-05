@@ -17,7 +17,7 @@
 解压直接使用
 
 ### Mac
-解压&&替换app目录
+解压&&替换app目录  
 目录位置 ~/Postman.app/Contents/Resources/app
 
 ### Linux
