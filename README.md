@@ -11,9 +11,9 @@
 ### Windows
 **app.rar|zip**  
 解压&&复制app文件夹到resources目录下即可  
-~/Postman/app\*.\*.\*/resources/
+~/Postman/app-\*.\*.\*/resources/
 
-**app\*.\*.\*.rar|zip**  
+**app-\*.\*.\*.rar|zip**  
 解压直接使用
 
 ### Mac
