@@ -25,7 +25,14 @@
 
 
 
-## 下载指定版本的Postman
+## 下载Postman
+
+### 最新版本下载
+https://www.postman.com/downloads/
+
+
+## 历史版本下载
+
 ### Windows
 **Win64** https://dl.pstmn.io/download/version/版本号/win64  
 **Win32** https://dl.pstmn.io/download/version/版本号/win32
