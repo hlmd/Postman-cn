@@ -22,3 +22,16 @@
 
 ### Linux
 解压&&替换app目录
+
+
+
+## 下载指定版本的Postman
+### Windows
+**Win64** https://dl.pstmn.io/download/version/版本号/win64  
+**Win32** https://dl.pstmn.io/download/version/版本号/win32
+
+### Mac
+https://dl.pstmn.io/download/version/版本号/osx
+
+### Linux
+https://dl.pstmn.io/download/version/版本号/linux
