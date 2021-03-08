@@ -1,6 +1,6 @@
 # Postman-cn
 最新汉化版本：8.0.7  
-更新时间：2021-03-09 
+更新时间：2021-03-09  
 [下载Postman](#下载Postman)  
 [点击下载汉化](https://github.com/hlmd/Postman-cn/releases)
 
