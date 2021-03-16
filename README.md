@@ -4,13 +4,17 @@
 [下载Postman](#下载Postman)  
 [点击下载汉化](https://github.com/hlmd/Postman-cn/releases)
 
+## 帮助
+QQ群：[494969115](https://jq.qq.com/?_wv=1027&k=WAheqTCx) 
+
 
 ## 汉化
 
 ### Windows
 **app.rar|zip**  
 解压&&复制app文件夹到resources目录下即可  
-~/Postman/app-\*.\*.\*/resources/
+~/Postman/app-\*.\*.\*/resources/  
+(PS:~为应用程序安装目录，默认在C:/Users/用户名/AppData/Local/Postman)
 
 **app-\*.\*.\*.rar|zip**  
 解压直接使用
@@ -41,3 +45,5 @@ https://dl.pstmn.io/download/version/版本号/osx
 
 ### Linux
 https://dl.pstmn.io/download/version/版本号/linux
+
+
