@@ -5,8 +5,8 @@
 [点击下载汉化](https://github.com/hlmd/Postman-cn/releases)
 
 ## 帮助
-QQ群：[494969115](https://jq.qq.com/?_wv=1027&k=WAheqTCx) 
-
+QQ群：[494969115](https://jq.qq.com/?_wv=1027&k=WAheqTCx)  
+不使用联网工作区，可以点开右上角设置图标中的便笺(Scratch Pad)模式
 
 ## 汉化
 
