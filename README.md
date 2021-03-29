@@ -2,7 +2,7 @@
 最新汉化版本：8.0.10  
 更新时间：2021-03-29  
 [下载Postman](#下载Postman)  
-请[点击下载汉化](https://github.com/hlmd/Postman-cn/releases)
+请[点击下载汉化](https://github.com/hlmd/Postman-cn/releases)  
 👆不用Clone存储库！👆
 
 ## 帮助
