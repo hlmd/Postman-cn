@@ -36,8 +36,8 @@ https://dl.pstmn.io/download/version/版本号/linux
 ## 设置为中文
 ### Windows
 **app.zip**  
-解压&&复制app文件夹到resources目录下即可(PS:~为应用程序安装目录，默认在C:/Users/用户名/AppData/Local/Postman)  
-**~/Postman/app-\*.\*.\*/resources/**  
+解压&&复制app文件夹到resources目录下即可(PS:\~为应用程序安装目录，默认在C:/Users/用户名/AppData/Local/Postman)  
+**\~/Postman/app-\*.\*.\*/resources/**  
 例如main.js位置：app-8.2.1/resources/app/main.js
 
 
