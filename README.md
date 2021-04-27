@@ -1,6 +1,6 @@
 # Postman-cn
-最新汉化版本：8.2.3  
-更新时间：2021-04-18  
+最新汉化版本：8.3.0  
+更新时间：2021-04-28  
 [下载Postman](#下载Postman)  
 请[点击下载汉化](https://github.com/hlmd/Postman-cn/releases)  
 👆👆👆不用Clone存储库！
@@ -44,6 +44,7 @@ https://dl.pstmn.io/download/version/版本号/linux
 
 ### Mac
 解压&&替换app目录  
+访达/应用程序/Postman.app(右键查看包内容)  
 目录位置 ~/Postman.app/Contents/Resources/app
 
 ### Linux
