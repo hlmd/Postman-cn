@@ -6,8 +6,9 @@
 👆👆👆不用Clone存储库！
 
 ## 步骤
-1. [下载&安装Postman](#下载Postman)
-2. [设置为中文](#设置为中文)
+1. [下载&安装Postman](#下载Postman)  
+2. [设置为中文](#设置为中文)  
+3. [禁止更新❗❗❗](#禁止更新)  
 
 ## 帮助
 QQ群：[494969115](https://jq.qq.com/?_wv=1027&k=WAheqTCx)  
@@ -40,8 +41,6 @@ https://dl.pstmn.io/download/version/版本号/linux
 **\~/Postman/app-\*.\*.\*/resources/**  
 例如main.js位置：app-8.2.1/resources/app/main.js
 
-
-
 ### Mac
 解压&&替换app目录  
 访达/应用程序/Postman.app(右键查看包内容)  
@@ -49,5 +48,19 @@ https://dl.pstmn.io/download/version/版本号/linux
 
 ### Linux
 解压&&替换app目录
+
+
+## 禁止更新❗❗❗
+> 这是一项危险操作，将会使你的电脑无法与Postman下载服务器连接，当然这就可以使你的Postman应用程序不再更新  
+
+将此解析加入你电脑的主机文件hosts
+```
+0.0.0.0         dl.pstmn.io
+```
+### hosts文件在
+Windows：C:/Windows/System32/drivers/etc/  
+Linux|Mac：/etc/
+
+> 如果想更新请将此解析注释或移除
 
 
