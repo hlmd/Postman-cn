@@ -14,7 +14,7 @@ QQ群：[494969115](https://jq.qq.com/?_wv=1027&k=WAheqTCx)
 不使用联网工作区，可以点开右上角设置图标中的便笺(Scratch Pad)模式
 
 
-## 下载Postman
+## 1. 下载Postman
 
 ### 最新版本下载
 https://www.postman.com/downloads/
@@ -33,7 +33,7 @@ https://dl.pstmn.io/download/version/版本号/osx
 https://dl.pstmn.io/download/version/版本号/linux
 
 
-## 设置为中文
+## 2. 设置为中文
 ### 1. 下载[**app.zip**](https://github.com/hlmd/Postman-cn/releases)  
 
 ### 2. 解压替换
@@ -51,7 +51,7 @@ https://dl.pstmn.io/download/version/版本号/linux
 解压&&替换app目录
 
 
-## 禁止更新❗❗❗
+## 3. 禁止更新❗❗❗
 > 这是一项危险操作，将会使你的电脑无法与Postman下载服务器连接，当然这就可以使你的Postman应用程序不再更新  
 
 将此解析加入你电脑的主机文件hosts
