@@ -20,16 +20,16 @@ QQ群：[494969115](https://jq.qq.com/?_wv=1027&k=WAheqTCx)
 https://www.postman.com/downloads/
 
 
-## 历史版本下载
+### 历史版本下载
 
-### Windows
+#### Windows
 **Win64** https://dl.pstmn.io/download/version/版本号/win64  
 **Win32** https://dl.pstmn.io/download/version/版本号/win32
 
-### Mac
+#### Mac
 https://dl.pstmn.io/download/version/版本号/osx
 
-### Linux
+#### Linux
 https://dl.pstmn.io/download/version/版本号/linux
 
 
