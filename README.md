@@ -22,15 +22,10 @@ https://www.postman.com/downloads/
 
 ### 历史版本下载
 
-#### Windows
-**Win64** https://dl.pstmn.io/download/version/版本号/win64  
-**Win32** https://dl.pstmn.io/download/version/版本号/win32
-
-#### Mac
-https://dl.pstmn.io/download/version/版本号/osx
-
-#### Linux
-https://dl.pstmn.io/download/version/版本号/linux
+**Windows64位** https://dl.pstmn.io/download/version/版本号/win64  
+**Windows32位** https://dl.pstmn.io/download/version/版本号/win32  
+**Mac** https://dl.pstmn.io/download/version/版本号/osx  
+**Linux** https://dl.pstmn.io/download/version/版本号/linux  
 
 
 ## 2. 设置为中文
