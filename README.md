@@ -15,17 +15,14 @@ QQ群：[494969115](https://jq.qq.com/?_wv=1027&k=WAheqTCx)
 
 
 ## 1. 下载Postman
-
-### 最新版本下载
-https://www.postman.com/downloads/
-
-
-### 历史版本下载
-
-**Windows64位** https://dl.pstmn.io/download/version/版本号/win64  
-**Windows32位** https://dl.pstmn.io/download/version/版本号/win32  
-**Mac** https://dl.pstmn.io/download/version/版本号/osx  
-**Linux** https://dl.pstmn.io/download/version/版本号/linux  
+|最新版本下载|https://www.postman.com/downloads/|
+|---|---|
+|||
+|**历史版本下载**|请把"版本号"替换为指定的版本号，例如：8.4.0|
+|Windows64位|https://dl.pstmn.io/download/version/版本号/win64|
+|Windows32位|https://dl.pstmn.io/download/version/版本号/win32|
+|Mac|https://dl.pstmn.io/download/version/版本号/osx|
+|Linux|https://dl.pstmn.io/download/version/版本号/linux|
 
 
 ## 2. 设置为中文
