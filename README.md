@@ -29,6 +29,7 @@ QQ群：[494969115](https://jq.qq.com/?_wv=1027&k=WAheqTCx)
 ### 1. 下载[**app.zip**](https://github.com/hlmd/Postman-cn/releases)  
 
 ### 2. 解压替换
+![Postman设置为中文](https://user-images.githubusercontent.com/45023268/119171249-e84aa980-ba96-11eb-8c84-28c65c7d0f6e.gif)
 #### Windows
 解压&&复制app文件夹到resources目录下即可(PS:\~为应用程序安装目录，默认在C:/Users/用户名/AppData/Local/Postman)  
 **\~/Postman/app-\*.\*.\*/resources/**  
