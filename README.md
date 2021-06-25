@@ -1,6 +1,6 @@
 # Postman-cn
-最新汉化版本：8.6.2  
-更新时间：2021-06-15  
+最新汉化版本：8.7.0  
+更新时间：2021-06-25  
 不要Clone存储库！  
 请按照下面步骤：
 
@@ -56,5 +56,6 @@ Windows：C:/Windows/System32/drivers/etc/
 Linux|Mac：/etc/
 
 > 如果想更新请将此解析注释或移除
+> Windows 删除安装目录的update.exe即可
 
 
