@@ -39,7 +39,7 @@ QQ群：[494969115](https://jq.qq.com/?_wv=1027&k=WAheqTCx)
 2. **下载对应版本的中文包**
 
 ### Windows
-1. **下载对应版本的** [**app.zip**](https://gitee.com/hlmd/PostmanCn/releases)
+1. **下载对应版本的** [**app.zip**](https://github.com/hlmd/Postman-cn/releases)
 2. **进入**`Postman安装地址/版本/resources`**目录**
    > 桌面找到Postman应用程序右键 -> 打开文件所在位置 再进入`app-*.*.*/resource`  
    > 默认安装地址：`C:/Users/用户名/AppData/Local/Postman`  
@@ -56,7 +56,7 @@ QQ群：[494969115](https://jq.qq.com/?_wv=1027&k=WAheqTCx)
 
 
 ### Mac
-1. **下载对应版本的** [**app.zip**](https://gitee.com/hlmd/PostmanCn/releases)
+1. **下载对应版本的** [**app.zip**](https://github.com/hlmd/Postman-cn/releases)
 2. **解压** `app.zip`
 3. **进入** `访达/应用程序/Postman.app/Contents/Resources/`
    > 进入`访达/应用程序`找到`Postman.app`右键查看包内容，再进入`Contents/Resources`
@@ -66,7 +66,7 @@ QQ群：[494969115](https://jq.qq.com/?_wv=1027&k=WAheqTCx)
 5. 重启Postman就可以了
 
 ### Linux
-1. **下载对应版本的** [**app.zip**](https://gitee.com/hlmd/PostmanCn/releases)
+1. **下载对应版本的** [**app.zip**](https://github.com/hlmd/Postman-cn/releases)
 ```shell
 # 下方为Github地址 将版本号替换为对应版本号，例如：8.8.0
 wget https://github.com/hlmd/Postman-cn/releases/download/版本号/app.zip
