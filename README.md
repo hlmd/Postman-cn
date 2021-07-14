@@ -7,9 +7,9 @@
 ## 步骤
 1. [**下载&安装Postman**](#1下载&安装Postman)
 2. [**安装中文版**](#2安装中文版)  
-   　[**Windows**](#Windows)  
-   　[**Mac**](#Mac)  
-   　[**Linux**](#Linux)
+   [**Windows**](#Windows)  
+   [**Mac**](#Mac)  
+   [**Linux**](#Linux)
 
 ## 帮助
 [Postman官方文档](https://learning.postman.com/docs)  
@@ -45,7 +45,7 @@ QQ群：[494969115](https://jq.qq.com/?_wv=1027&k=WAheqTCx)
    > 默认安装地址：`C:/Users/用户名/AppData/Local/Postman`  
    > 示例：`C:/Users/用户名/AppData/Local/Postman/app-8.8.0/resources`  
    > ![resources目录](https://user-images.githubusercontent.com/45023268/125588720-0ba27b65-26cc-47ce-9c1f-8e456797be09.png)
-3. 复制`app.zip`到`resources`目录  
+3. 复制`app.zip`到`resources`目录
    > 将`app.zip`解压到当前文件夹 会生成一个`app`目录  
    > 进入`app`目录看到以下图就可以了  
    > ![app目录](https://user-images.githubusercontent.com/45023268/125589699-3435c048-fd90-437a-8d74-35a9923ef4be.png)
@@ -56,8 +56,8 @@ QQ群：[494969115](https://jq.qq.com/?_wv=1027&k=WAheqTCx)
 
 
 ### Mac
-1. **下载对应版本的** [**app.zip**](https://gitee.com/hlmd/PostmanCn/releases)  
-2. **解压** `app.zip`  
+1. **下载对应版本的** [**app.zip**](https://gitee.com/hlmd/PostmanCn/releases)
+2. **解压** `app.zip`
 3. **进入** `访达/应用程序/Postman.app/Contents/Resources/`
    > 进入`访达/应用程序`找到`Postman.app`右键查看包内容，再进入`Contents/Resources`
 4. **替换`app`文件夹**
@@ -80,13 +80,13 @@ unzip -o -d Postman安装地址/app/resources app.zip
 ## 禁用自动更新❗❗❗
 > 这是一项危险操作，将会使你的电脑无法与Postman下载服务器连接，当然这就可以使你的Postman应用程序不再更新  
 > 如果想更新请将此解析注释或移除  
-> Windows 删除安装目录的update.exe即可  
+> Windows 删除安装目录的update.exe即可
 
 将此解析加入你电脑的主机文件hosts
 ```
 0.0.0.0         dl.pstmn.io
 ```
-**hosts文件在**  
+**hosts文件在**
 > **Windows**：`C:/Windows/System32/drivers/etc/hosts`  
 > **Linux & Mac**：`/etc/hosts`
 
