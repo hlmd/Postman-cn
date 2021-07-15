@@ -41,7 +41,7 @@ QQ群：[494969115](https://jq.qq.com/?_wv=1027&k=WAheqTCx)
 ### Windows
 1. **下载对应版本的** [**app.zip**](https://github.com/hlmd/Postman-cn/releases)
 2. **进入**`Postman安装地址/版本/resources`**目录**
-   > 桌面找到Postman应用程序右键 -> 打开文件所在位置 再进入`app-*.*.*/resource`  
+   > 桌面找到Postman应用程序右键 -> 打开文件所在位置 再进入`app-*.*.*/resources`  
    > 默认安装地址：`C:/Users/用户名/AppData/Local/Postman`  
    > 示例：`C:/Users/用户名/AppData/Local/Postman/app-8.8.0/resources`  
    > ![resources目录](https://user-images.githubusercontent.com/45023268/125588720-0ba27b65-26cc-47ce-9c1f-8e456797be09.png)
