@@ -61,6 +61,7 @@ QQ群：[494969115](https://jq.qq.com/?_wv=1027&k=WAheqTCx)
 3. **进入** `访达/应用程序/Postman.app/Contents/Resources/`
    > 进入`访达/应用程序`找到`Postman.app`右键查看包内容，再进入`Contents/Resources`
 4. **替换`app`文件夹**
+   > 如果目录下没有 `app` 文件夹，那么直接解压 `app.zip` 得到 `app` 文件夹即可  
    > 将`app.zip`解压出来的`app`文件夹复制到`Resources`目录，替换原本的`app`文件夹  
    > 可以先删除或重命名原本的`app`文件夹
 5. 重启Postman就可以了
