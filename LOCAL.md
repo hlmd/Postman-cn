@@ -116,7 +116,7 @@ C:/Users/用户名/AppData/Local/Postman/app-版本/resources/app
 ```
 
 ### 网页操作
-> 使用 [Nginx](http://nginx.org/) 、[Apache](https://httpd.apache.org/) 或 [PhpStudy](https://www.xp.cn/)  
+> 使用 [Nginx](http://nginx.org/) 、[Apache](https://httpd.apache.org/) 或 [PhpStudy](https://www.xp.cn/) 建立站点  
 > 访问 [站点/php/index.php](站点/php/index.php)
 
 
