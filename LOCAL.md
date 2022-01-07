@@ -4,6 +4,21 @@
 更新时间：2022-01-06  
 直接汉化请看：[README](README.md)
 
+## 目录
+ + [先决条件](#先决条件)
+ + [步骤](#步骤)
+   + [1. 准备](#1-准备)
+   + [2. 配置 Postman 信息](#2-配置-postman-信息)
+   + [3. 汉化](#3-汉化)
+   + [Postman 默认安装位置](#postman-默认安装位置)
+   + [网页操作](#网页操作)
+ + [命令操作](#命令操作)
+   + [php api.php](#php-apiphp)
+   + [js-beautify](#js-beautify)
+   + [prettier](#prettier)
+   + [asar](#asar)
+ + [贡献指南](#贡献指南)
+
 ## 先决条件
 
 1. **PHP >= 7.0**
@@ -100,6 +115,12 @@ C:/Users/用户名/AppData/Local/Postman/app-版本/resources/app
 /Application/Postman.app/Contents/Resources/app/
 ```
 
+### 网页操作
+> 使用 [Nginx](http://nginx.org/) 、[Apache](https://httpd.apache.org/) 或 [PhpStudy](https://www.xp.cn/)  
+> 访问 [站点/php/index.php](站点/php/index.php)
+
+
+
 
 ## 命令操作
 
@@ -185,12 +206,6 @@ asar p app app.asar
   *
   help [命令]                            显示命令帮助
 ```
-
-
-### 网页操作
-> 使用 [Nginx](http://nginx.org/) 、[Apache](https://httpd.apache.org/) 或 [PhpStudy](https://www.xp.cn/)  
-> 访问 [站点/php/index.php](站点/php/index.php)
-
 
 
 ## 贡献指南
