@@ -194,4 +194,5 @@ asar p app app.asar
 
 
 ## 贡献指南
-请参考 `php/lang/exp.php` 进行新增
+请参考 `php/lang/exp.php` 进行新增  
+提取字符前，请先将文件格式化
