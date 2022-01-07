@@ -1,0 +1,77 @@
+{
+  "1000": {
+    "code": 1000,
+    "name": "Normal Closure",
+    "description": "Connection was closed successfully."
+  },
+  "1001": {
+    "code": 1001,
+    "name": "Going Away",
+    "description": "Either because of a server failure or because the client is navigating away."
+  },
+  "1002": {
+    "code": 1002,
+    "name": "Protocol Error",
+    "description": "Endpoint terminated the connection due to a protocol error."
+  },
+  "1003": {
+    "code": 1003,
+    "name": "Unsupported Data",
+    "description": "Endpoint received data of a type it cannot accept."
+  },
+  "1005": {
+    "code": 1005,
+    "name": "No Status Received",
+    "description": "Missing status code even though one was expected."
+  },
+  "1006": {
+    "code": 1006,
+    "name": "Abnormal Closure",
+    "description": "No close frame was received."
+  },
+  "1007": {
+    "code": 1007,
+    "name": "Invalid Frame",
+    "description": "Endpoint received inconsistent data."
+  },
+  "1008": {
+    "code": 1008,
+    "name": "Policy Violation",
+    "description": "Endpoint received a message that violates its policy."
+  },
+  "1009": {
+    "code": 1009,
+    "name": "Message too big",
+    "description": "Endpoint received a data frame that was too large."
+  },
+  "1010": {
+    "code": 1010,
+    "name": "Missing Extension",
+    "description": "Server did not negotiate one or more extension expected by client."
+  },
+  "1011": {
+    "code": 1011,
+    "name": "Server Error",
+    "description": "Internal server error while operating."
+  },
+  "1012": {
+    "code": 1012,
+    "name": "Service Restart",
+    "description": "Server is restarting."
+  },
+  "1013": {
+    "code": 1013,
+    "name": "Try Again Later",
+    "description": "Temporary server error while operating."
+  },
+  "1014": {
+    "code": 1014,
+    "name": "Bad Gateway",
+    "description": "Server acting as gateway received an invalid response."
+  },
+  "1015": {
+    "code": 1015,
+    "name": "TLS Handshake",
+    "description": "Failure while performing the TLS handshake."
+  }
+}
