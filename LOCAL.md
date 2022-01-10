@@ -92,7 +92,7 @@ const APP_VERSION = '9.8.1';
 const APP_PATH = 'C:/Users/用户名/AppData/Local/Postman/app-' . APP_VERSION . '/resources/app/';
 
 // Mac
-const APP_PATH = '/Application/Postman.app/Contents/Resources/app/';
+const APP_PATH = '/Applications/Postman.app/Contents/Resources/app/';
 
 ```
 
@@ -112,7 +112,7 @@ php api.php s
 C:/Users/用户名/AppData/Local/Postman/app-版本/resources/app
 
 # Mac
-/Application/Postman.app/Contents/Resources/app/
+/Applications/Postman.app/Contents/Resources/app/
 ```
 
 ### 网页操作
