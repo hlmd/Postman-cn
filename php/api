@@ -1,0 +1,2 @@
+#!/usr/bin/env php
+<?php require 'api.php';

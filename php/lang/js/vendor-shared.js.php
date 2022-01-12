@@ -1,12 +1,9 @@
 <?php
-$a=1;
-if (isset($a)) {
-    return require 'lang/js/vendor-shared.js2.php';
-}
+
+return require 'lang/js/vendor-shared.js2.php';
 
 return [
     'regex' => [
-        '/______/s' => '______',
         '/______/s' => '______',
     ],
     [
@@ -185,25 +182,22 @@ return [
 //        '`Version ${this.props.selectedApiVersion} is already synced with GitHub. Select a different version to continue.`' => '`版本 ${this.props.selectedApiVersion} 已经与 GitHub 同步. 选择一个不同的版本以继续.`',
 //        '`${p}: ${n[t]<10?"< 10":S.default.convertToUserFriendlyMetric(n[t])} ${l} found for "${r}"`' => '`${p}: ${n[t]<10?"< 10":S.default.convertToUserFriendlyMetric(n[t])} ${l} 找到 "${r}"`',
 //        '`${p}: ${s<10?"< 10":S.default.convertToUserFriendlyMetric(n[t])} ${l} found for "${r}"`' => '`${p}: ${s<10?"< 10":S.default.convertToUserFriendlyMetric(n[t])} ${l} 找到 "${r}"`',
-        '______' => '______',
-        '______' => '______',
-        '______' => '______',
-        '______' => '______',
-        '______' => '______',
-        '______' => '______',
-        '______' => '______',
-    ],
-    [
-        "______" => "______",
-        "______" => "______",
-        "______" => "______",
-    ],
-    [
 
         '______' => '______',
         '______' => '______',
         '______' => '______',
         '______' => '______',
+        '______' => '______',
+        '______' => '______',
+    ],
+    [
+        "______" => "______",
+        "______" => "______",
+        "______" => "______",
+    ],
+    [
+        '______' => '______',
+        '______' => '______',
     ],
     [
         "______" => "______",
@@ -215,8 +209,7 @@ return [
         "'______'" => "'______'",
     ],
     [
-        '"______"' => '"______"',
-        '"______"' => '"______"',
+      '"______"' => '"______"',
         '"______"' => '"______"',
         '"______"' => '"______"',
         '"______"' => '"______"',
