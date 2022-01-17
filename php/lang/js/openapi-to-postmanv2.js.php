@@ -1,5 +1,93 @@
 <?php
 
+return [
+    'regex' => [ // 正则替换
+        '/"Select whether to generate the request parameters based on the \[schema\]\((.+?)\) or the \[example\]\((.+?)\) in the schema\."/s' => '"选择是根据 [架构]($1) 还是架构中的 [示例]($2) 生成请求参数."',
+        '/"Select whether to generate the response parameters based on the \[schema\]\((.+?)\) or the \[example\]\((.+?)\) in the schema\."/s' => '"选择是根据 [架构]($1) 还是架构中的 [示例]($2) 生成响应参数."',
+        '/______/s' => '______',
+        '/______/s' => '______',
+    ],
+    [
+        '______' => '______',
+        '______' => '______',
+        '______' => '______',
+    ],
+    [
+        "______" => "______",
+        "______" => "______",
+        "______" => "______",
+    ],
+    [
+        '______' => '______',
+        '______' => '______',
+        '______' => '______',
+    ],
+    [
+        "______" => "______",
+        "______" => "______",
+        "______" => "______",
+    ],
+    [
+        "'______'" => "'______'",
+        "'______'" => "'______'",
+        "'______'" => "'______'",
+    ],
+    [
+        '"Naming requests"' => '"命名请求"',
+        '"Set indent character"' => '"设置缩进字符"',
+        '"Option for setting indentation character"' => '"设置缩进字符的选项"',
+        '"Collapse redundant folders"' => '"折叠冗余文件夹"',
+        '"Optimize conversion"' => '"优化转换"',
+        '"Request parameter generation"' => '"请求参数生成"',
+        '"Response parameter generation"' => '"响应参数生成"',
+        '"Folder organization"' => '"文件夹结构"',
+        '"Select whether to create folders according to the spec’s paths or tags."' => '"选择是否根据规范的路径或标签创建文件夹."',
+        '"Include auth info in example requests"' => '"在示例请求中包括认证信息"',
+        '"Select whether to include authentication parameters in the example request"' => '"选择是否在示例请求中包括身份验证参数"',
+        '"Schema"' => '"架构"',
+        '"Example"' => '"示例"',
+        '"Fallback"' => '"Fallback"',
+        '"Determines how the requests inside the generated collection will be named. If “Fallback” is selected, the request will be named after one of the following schema values: `description`, `operationid`, `url`."' => '"确定如何命名所生成集合中的请求. 如果选择了“Fallback”, 则请求将以以下架构值之一命名: `description`, `operationid`, `url`."',
+        '"Importing will collapse all folders that have only one child element and lack persistent folder-level data."' => '"导入将折叠所有只有一个子元素且缺少持久文件夹级数据的文件夹."',
+        '"Optimizes conversion for large specification, disabling this option might affect the performance of conversion."' => '"优化大规格的转换, 禁用此选项可能会影响转换的性能."',
+        '"Enable Schema Faking"' => '"启用架构伪造"',
+        '"Whether or not schemas should be faked."' => '"架构是否应该被伪造."',
+        '"Schema resolution nesting limit"' => '"架构解析嵌套限制"',
+        '"Short error messages during request <> schema validation"' => '"请求 <> 架构验证期间的简短错误消息"',
+        '"Whether detailed error messages are required for request <> schema validation operations."' => '"请求 <> 模式验证操作是否需要详细的错误消息."',
+        '"Properties to ignore during validation"' => '"验证期间要忽略的属性"',
+        '"Specific properties (parts of a request/response pair) to ignore during validation. Must be sent as an array of strings. Valid inputs in the array: PATHVARIABLE, QUERYPARAM, HEADER, BODY, RESPONSE_HEADER, RESPONSE_BODY"' => '"验证期间要忽略的特定属性(请求/响应对的一部分). 必须作为字符串数组发送. 数组中的有效输入: PATHVARIABLE, QUERYPARAM, HEADER, BODY, RESPONSE_HEADER, RESPONSE_BODY"',
+        '"Whether MISSING_IN_SCHEMA mismatches should be returned"' => '"是否不匹配应该返回 MISSING_IN_SCHEMA"',
+        '"MISSING_IN_SCHEMA indicates that an extra parameter was included in the request. For most use cases, this need not be considered an error."' => '"MISSING_IN_SCHEMA 指示请求中包含一个额外的参数. 对于大多数用例, 不必将其视为错误."',
+        '"Show detailed body validation messages"' => '"显示详细的正文验证消息"',
+        '"Determines whether to show detailed mismatch information for application/json content in the request/response body."' => '"确定是否显示 application/json 内容的详细不匹配信息在请求/响应正文中."',
+        '"Suggest fixes if available"' => '"建议修复(如果可用)"',
+        '"Whether to provide fixes for patching corresponding mismatches."' => '"是否提供修补程序以修补相应的不匹配项."',
+        '"Show Metadata validation messages"' => '"显示元数据验证消息"',
+        '"Whether to show mismatches for incorrect name and description of request"' => '"是否为不正确的名称和请求描述显示不匹配项"',
+        '"Ignore mismatch for unresolved postman variables"' => '"忽略未解决的 postman 变量的不匹配"',
+        '"Whether to ignore mismatches resulting from unresolved variables in the Postman request"' => '"是否忽略 Postman 请求中未解决的变量导致的不匹配"',
+        '"Enable strict request matching"' => '"启用严格的请求匹配"',
+        '"Whether requests should be strictly matched with schema operations. Setting to true will not include any matches where the URL path segments don\'t match exactly."' => '"求是否应与架构操作严格匹配. 设置为 true 将不包括 URL 路径段不完全匹配的任何匹配项."',
+        '"Disable optional parameters"' => '"禁用可选参数"',
+        '"Whether to set optional parameters as disabled"' => '"是否将可选参数设置为禁用"',
+        '"Keep implicit headers"' => '"保留隐式的 header"',
+        '"Whether to keep implicit headers from the OpenAPI specification, which are removed by default."' => '"是否保留 OpenAPI 规范中的隐式 header, 默认情况下已删除"',
+        '"Specification must contain a semantic version number of the OAS specification"' => '"规范必须包含 OAS 规范的语义版本号"',
+        '"Specification must contain Paths Object for the available operational paths"' => '"规范必须包含可用操作路径的路径对象"',
+        '"Specification must contain an Info Object for the meta-data of the API"' => '"规范必须包含 API 元数据的信息对象"',
+        '"Specification must contain a title in order to generate a collection"' => '"规范必须包含标题才能生成集合"',
+        '"Specification must contain a semantic version number of the API in the Info Object"' => '"规范必须在 Info Object 中包含 API 的语义版本号"',
+        '"Invalid format. Input must be in YAML or JSON format."' => '"无效的格式. 输入必须是 YAML 或 JSON 格式."',
+        '"______"' => '"______"',
+        '"______"' => '"______"',
+        '"______"' => '"______"',
+        '"______"' => '"______"',
+    ]
+];
+
+
+
 return array_merge(
     [
         '______' => '______',

@@ -1,4 +1,4 @@
-@echo on
+@echo off
 
 set BACK_PATH=%cd%
 set INSTALL_DERIVE=D:

@@ -9,7 +9,7 @@ set_time_limit(0);
 # 应用程序
 const APP_NAME = 'Postman';               // 名称
 const APP_IMAGE = './images/app.png';  // 图片
-const APP_VERSION = '9.8.3';             // 版本
+const APP_VERSION = '9.9.0';             // 版本
 
 # 路径配置
 const APP_PATH = 'D:/App/Network/Postman/Install/app-' . APP_VERSION . '/resources/app/';            // 应用程序根目录
@@ -86,6 +86,7 @@ const FILES_INFO = [
     'js/console.js',
     'js/FindReplace.worker.js',
     'js/HistorySidebarContainer.js',
+    'js/openapi-to-postmanv2.js',
     'js/postman-code-generators.js',
     'js/postman-converters.js',
     'js/proxyAuth.css',

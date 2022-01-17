@@ -1,6 +1,6 @@
 <?php
 
-return require 'lang/js/vendor-shared.js2.php';
+return require 'vendor-shared.js2.php';
 
 return [
     'regex' => [

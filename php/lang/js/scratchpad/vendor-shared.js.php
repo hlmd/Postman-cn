@@ -2527,7 +2527,7 @@ return [
         '"TYPE"' => '"类型"',
         '"Use secret type to store keys, tokens, secrets and passwords. Secret type enables masking of values on the screen. Values of default type are visible as plaintext."' => '"使用秘密类型来存储密钥、令牌、秘密和密码. 秘密类型可以屏蔽屏幕上的值. 默认类型的值以纯文本形式显示."',
         '" about the different import formats supported"' => '"关于支持的不同导入格式"',
-        '"______"' => '"______"',
+        '"You can view your work once you\'re back online."' => '"重新在线后即可查看您的工作."',
         '"______"' => '"______"',
         '"______"' => '"______"',
         '"______"' => '"______"',
