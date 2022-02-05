@@ -9,7 +9,7 @@ set_time_limit(0);
 # 应用程序
 const APP_NAME = 'Postman';               // 名称
 const APP_IMAGE = './images/app.png';  // 图片
-const APP_VERSION = '9.12.0';             // 版本
+const APP_VERSION = '9.12.2';             // 版本
 
 # 路径配置
 const APP_PATH = 'D:/App/Network/Postman/Install/app-' . APP_VERSION . '/resources/app/';            // 应用程序根目录
