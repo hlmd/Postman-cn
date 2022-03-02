@@ -26,7 +26,8 @@ QQ群：[494969115](https://jq.qq.com/?_wv=1027&k=WAheqTCx)
 |**历史版本下载**|请把下面链接的"版本号"替换为指定的版本号，例如：8.8.0|
 |Windows64位|https://dl.pstmn.io/download/version/版本号/win64|
 |Windows32位|https://dl.pstmn.io/download/version/版本号/win32|
-|Mac|https://dl.pstmn.io/download/version/版本号/osx|
+|Mac Intel Chip|https://dl.pstmn.io/download/version/版本号/osx_64|
+|Mac Apple Chip|https://dl.pstmn.io/download/version/版本号/osx_arm64|
 |Linux|https://dl.pstmn.io/download/version/版本号/linux|
 
 ### [安装Postman](https://learning.postman.com/docs/getting-started/installation-and-updates/)
