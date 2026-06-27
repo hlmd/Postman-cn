@@ -1,3 +1,14 @@
+<div align="center">                                                                                                                                                                                   
+                                                                                                                                                                                                         
+  # ⚠️ 本项目已迁移 / This project has moved                                                                                                                                                             
+                                                                                                                                                                                                         
+  ### 👉 新仓库：**[hlmd/postman-chinese-injector](https://github.com/hlmd/postman-chinese-injector)**                                                                                                   
+                                                                                                                                                                                                         
+  老的「下载 `app.zip` 替换 resources」方式**已不适用于新版 Postman**，本仓库自 2022 年起不再维护。                                                                                                      
+  请移步新项目获取持续更新的汉化。                                                                                                                                                             
+  </div>
+<br/>
+<br/>
 # Postman 中文版
 最新中文版本：9.12.2  
 更新时间：2022-02-06  
