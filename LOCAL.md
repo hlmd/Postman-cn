@@ -1,3 +1,5 @@
+> ⚠️ **本文档已过时，仅适用于 Postman 9.12.2 及以前。** 新版 Postman（10.x ～ 12.x）汉化请使用 👉 [hlmd/postman-chinese-injector](https://github.com/hlmd/postman-chinese-injector)
+
 # Postman 汉化
 
 当前支持版本：9.12.2  

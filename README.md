@@ -1,16 +1,39 @@
-<div align="center">                                                                                                                                                                                   
-                                                                                                                                                                                                         
-  # ⚠️ 本项目已迁移 / This project has moved                                                                                                                                                             
-                                                                                                                                                                                                         
-  ### 👉 新仓库：**[hlmd/postman-chinese-injector](https://github.com/hlmd/postman-chinese-injector)**                                                                                                   
-                                                                                                                                                                                                         
-  老的「下载 `app.zip` 替换 resources」方式**已不适用于新版 Postman**，本仓库自 2022 年起不再维护。                                                                                                      
-  请移步新项目获取持续更新的汉化。                                                                                                                                                             
-  </div>
-<br/>
-<br/>
-# Postman 中文版
-最新中文版本：9.12.2  
+<div align="center">
+
+# ⚠️ 本项目已迁移 / This project has moved
+
+### 👉 新仓库：**[hlmd/postman-chinese-injector](https://github.com/hlmd/postman-chinese-injector)**
+
+本仓库的「替换 `app.zip`」汉化方式自 2022 年起停止维护，只做存档。<br/>
+**无论新旧版本（7.x ～ 12.x）都请用新项目**。新项目一直在更新，同时支持简体中文、繁體中文和网页版。
+
+</div>
+
+---
+
+## Postman 怎么设置成中文？（7.x ～ 12.x 通用）
+
+Postman 官方界面只有 English 和日本語，没有中文。要用中文界面，请使用本仓库的接替项目 **[postman-chinese-injector](https://github.com/hlmd/postman-chinese-injector)**：
+
+1. **完全退出 Postman**；
+2. 任选一种方式运行汉化程序：
+   - 直接下载：到 [新仓库 Release](https://github.com/hlmd/postman-chinese-injector/releases) 下载对应平台的可执行文件，运行即可；
+   - npm：`npx postman-chinese-injector`
+   - Scoop（Windows）：`scoop bucket add hlmd https://github.com/hlmd/scoop-bucket` 后执行 `scoop install hlmd/postman-chinese-injector`
+   - Homebrew（macOS / Linux）：`brew install hlmd/tap/postman-chinese-injector`
+3. 重启 Postman，界面就变成中文了。之后可以在「设置 → 通用 → 语言」里切换简体、繁體或英文。
+
+**网页版**：安装新仓库提供的 Chrome / Edge 扩展。完整说明、常见问题和卸载方法都在 👉 [新仓库 README](https://github.com/hlmd/postman-chinese-injector#readme)。
+
+> 不要再把本仓库的 `app.zip` 放进新版 Postman：新版的程序结构已经变了，放进去不会生效，还可能导致 Postman 启动异常。
+
+---
+
+<details>
+<summary><b>旧版存档：Postman 9.x 及以前的 app.zip 汉化方法（已停止维护，点击展开）</b></summary>
+
+# 旧版汉化包说明（仅 9.12.2 及以前）
+最后一个版本：9.12.2（已停止更新）  
 更新时间：2022-02-06  
 本地部署汉化请看：[本地部署](LOCAL.md)  
 汉化请按照下面[步骤](#步骤)：
@@ -103,5 +126,4 @@ unzip -o -d Postman安装地址/app/resources app.zip
 > **Windows**：`C:/Windows/System32/drivers/etc/hosts`  
 > **Linux & Mac**：`/etc/hosts`
 
-
-
+</details>
